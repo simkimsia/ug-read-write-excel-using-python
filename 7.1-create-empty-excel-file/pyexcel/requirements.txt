@@ -1,2 +1,2 @@
 pyexcel==0.5.7
-pyexcel-xlsx
+pyexcel-xlsx==0.5.5
