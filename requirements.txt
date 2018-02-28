@@ -1,2 +1,3 @@
+openpyxl==2.5.0
 pyexcel==0.5.7
 pyexcel-xlsx==0.5.5
