@@ -2,4 +2,5 @@
 **/*.csv
 **/*.pyc
 .cache/
+.pytest_cache/
 .idea/
