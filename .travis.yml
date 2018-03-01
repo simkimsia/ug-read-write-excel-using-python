@@ -1,0 +1,25 @@
+# https://docs.travis-ci.com/
+language: python
+
+sudo: no
+
+python:
+  - "3.4"
+  - "3.5"
+  - "3.6"
+
+cache: pip
+
+install:
+  - pip install pip setuptools wheel --upgrade
+  - pip install -r requirements.txt
+  - pip install pytest pytest-cov pytest-runner codecov --upgrade
+
+script:
+  - pytest -v -s
+  - py.test -v --cov=examples --cov-report xml
+
+after_success:
+ # run codecov report
+  - codecov -e $TRAVIS_PYTHON_VERSION
+
