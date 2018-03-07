@@ -1,7 +1,6 @@
 from openpyxl import Workbook
 
 
-def save_empty_file():
+def save_empty_file(save_as_path = 'c71_openpyxl_empty.xlsx'):
     book = Workbook()
-    save_as_path = 'empty.xlsx'
     book.save(save_as_path)
