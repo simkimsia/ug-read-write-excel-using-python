@@ -1,4 +1,6 @@
 import pyexcel
 
-book = pyexcel.Book()
-book.save_as(filename='abc.xlsx')
+
+def save_empty_file(save_as_path='c71_pyexcel_empty.xlsx'):
+    book = pyexcel.Book()
+    book.save_as(save_as_path)

@@ -6,7 +6,6 @@ import os
 
 class TestOpenPyXLEmptyFile(unittest.TestCase):
     def setUp(self):
-        os.path.join(os.path.dirname(os.path.abspath(__file__)), 'empty.xlsx')
         dir_path = Path(__file__).resolve().parent
         for f in dir_path.glob('*.xlsx'):
             f.unlink()
