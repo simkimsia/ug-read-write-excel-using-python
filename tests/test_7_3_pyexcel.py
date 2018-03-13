@@ -1,0 +1,31 @@
+from pathlib import Path
+from examples.c73_crud_sheets.pyexcel import index
+import unittest
+import os
+
+
+class TestPyExcelCrud(unittest.TestCase):
+    def setUp(self):
+        dir_path = Path(__file__).resolve().parent
+        for f in dir_path.glob('*.xlsx'):
+            f.unlink()
+
+    def tearDown(self):
+        dir_path = Path(__file__).resolve().parent
+        for f in dir_path.glob('*.xlsx'):
+            f.unlink()
+
+    def test_list_all_sheets(self):
+        # python35 cannot write to Path, so use os.path
+        tests_path = os.path.dirname(
+            os.path.abspath(__file__))
+        project_root = os.path.dirname(
+            tests_path)
+        examples_path = os.path.join(project_root, 'examples')
+        sample_xlsx_path = os.path.join(
+            examples_path, 'c73_crud_sheets', '3_sheets.xlsx')
+        self.assertTrue(
+            Path(sample_xlsx_path).is_file())
+        sheets = index.list_all_sheet_names(sample_xlsx_path)
+        expected_sheets = ['Sheet1', 'Sheet2', 'Sheet3']
+        self.assertListEqual(sheets, expected_sheets)
