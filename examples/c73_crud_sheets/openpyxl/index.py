@@ -1,9 +1,9 @@
-from openpyxl import Workbook
+from openpyxl import load_workbook
 
 
 def list_all_sheet_names(file_path='../3_sheets.xlsx'):
-    book = Workbook()
-    book.save(file_path)
+    wb = load_workbook(filename=file_path)
+    return wb.sheetnames
 
 
 def add_new_sheet(file_path, new_sheet_name):
