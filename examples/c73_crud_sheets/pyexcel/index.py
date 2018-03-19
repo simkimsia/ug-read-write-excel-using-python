@@ -16,9 +16,9 @@ def has_sheet(file_path, looking_for_sheet_name):
 
 
 def add_new_sheet(file_path, new_sheet_name):
-    book = pyexcel.get_book(file_name=file_path)
     if (has_sheet(file_path, new_sheet_name)):
         raise Exception
+    book = pyexcel.get_book(file_name=file_path)
     book += Sheet(name=new_sheet_name)
     return book.save_as(file_path)
 

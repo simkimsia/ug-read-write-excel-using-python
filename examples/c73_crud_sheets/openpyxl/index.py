@@ -12,6 +12,8 @@ def has_sheet(file_path, looking_for_sheet_name):
 
 
 def add_new_sheet(file_path, new_sheet_name):
+    if (has_sheet(file_path, new_sheet_name)):
+        raise Exception
     wb = load_workbook(filename=file_path)
     wb.create_sheet(new_sheet_name)
     return wb.save(file_path)
