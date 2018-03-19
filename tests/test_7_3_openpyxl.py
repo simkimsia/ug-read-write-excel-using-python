@@ -54,7 +54,7 @@ class TestOpenPyXLCrud(unittest.TestCase):
             'c73_openpyxl_empty.xlsx')
         self.assertFalse(
             Path(save_path).is_file())
-        create_index.save_empty_file_another_way(save_path)
+        create_index.save_empty_file(save_path)
         self.assertTrue(
             Path(save_path).is_file())
         new_sheet_name = 'New Sheet'
