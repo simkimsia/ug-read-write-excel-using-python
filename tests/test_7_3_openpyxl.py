@@ -65,3 +65,22 @@ class TestOpenPyXLCrud(unittest.TestCase):
         # exception is thrown
         with self.assertRaises(Exception):
             index.add_new_sheet(save_path, new_sheet_name)
+
+    def test_delete_sheet(self):
+        # python35 cannot write to Path, so use os.path
+        save_path = os.path.join(
+            os.path.dirname(
+                os.path.abspath(__file__)),
+            'c73_openpyxl_empty.xlsx')
+        self.assertFalse(
+            Path(save_path).is_file())
+        create_index.save_empty_file(save_path)
+        new_sheet_name = 'New Sheet'
+        index.add_new_sheet(save_path, new_sheet_name)
+        self.assertTrue(index.has_sheet(save_path, new_sheet_name))
+        index.delete_sheet(save_path, new_sheet_name)
+        self.assertFalse(index.has_sheet(save_path, new_sheet_name))
+        # when attempt to delete sheet name that does not exist
+        # exception is thrown
+        with self.assertRaises(Exception):
+            index.delete_sheet(save_path, new_sheet_name)

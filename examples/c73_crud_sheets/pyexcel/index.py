@@ -24,9 +24,9 @@ def add_new_sheet(file_path, new_sheet_name):
 
 
 def delete_sheet(file_path, sheet_name):
-    book = pyexcel.get_book(file_name=file_path)
     if (not has_sheet(file_path, sheet_name)):
         raise Exception
+    book = pyexcel.get_book(file_name=file_path)
     del book[sheet_name]
     return book.save_as(file_path)
 

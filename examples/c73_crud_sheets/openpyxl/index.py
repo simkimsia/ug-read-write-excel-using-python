@@ -1,4 +1,4 @@
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 
 
 def list_all_sheet_names(file_path='../3_sheets.xlsx'):
@@ -20,15 +20,28 @@ def add_new_sheet(file_path, new_sheet_name):
 
 
 def delete_sheet(file_path, sheet_name):
-    book = Workbook()
-    book.save(file_path)
+    if (not has_sheet(file_path, sheet_name)):
+        raise Exception
+    wb = load_workbook(filename=file_path)
+    del wb[sheet_name]
+    return wb.save(file_path)
 
 
-def order_sheets_alphabetically(file_path, order="asc"):
-    book = Workbook()
-    book.save(file_path)
+# This is not easy to do even with other libraries like xlsxwriter
+# as it involves copying
+# data from one sheet in one book to another book
+# this is also why I recommend pyexcel
+def order_sheets_alphabetically(
+    file_path,
+    dest_file_path,
+    reverse=False
+):
+    return True
 
 
+# Again this is not easy to do even with other libraries like xlsxwriter
+# as it involves copying
+# data from one sheet in one book to another book
+# this is also why I recommend pyexcel
 def rename_sheet(file_path, sheet_name, new_sheet_name):
-    book = Workbook()
-    book.save(file_path)
+    return True
