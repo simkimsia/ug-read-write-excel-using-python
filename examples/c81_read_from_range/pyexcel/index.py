@@ -2,14 +2,6 @@ from pyexcel import load_workbook, Workbook
 import re
 
 
-def extract_out_letters(string):
-    return "".join(re.findall("[a-zA-Z]+", string))
-
-
-def extract_out_numbers(string):
-    return "".join(re.findall("[0-9]+", string))
-
-
 def get_row_col_stats(start_cell, end_cell):
     # separate the number and letters from start_cell
     start_row_in_letter = extract_out_letters(start_cell)
