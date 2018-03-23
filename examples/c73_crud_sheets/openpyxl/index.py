@@ -11,6 +11,35 @@ def has_sheet(file_path, looking_for_sheet_name):
     return looking_for_sheet_name in sheet_names
 
 
+def read_sheet_data(file_path, sheet_name):
+    wb = load_workbook(file_path)
+    sheet = wb[sheet_name]
+    data = []
+    cols, rows = sheet.max_column, sheet.max_row
+    data = [[0 for x in range(cols)] for y in range(rows)]
+    for row_index, row in enumerate(
+        sheet.iter_rows(
+            max_col=sheet.max_column,
+            max_row=sheet.max_row
+        )
+    ):
+        for col_index, cell in enumerate(row):
+            data[row_index][col_index] = cell.value
+    return data
+
+
+def write_sheet_data(workbook, sheet_name, data):
+    workbook.create_sheet(sheet_name)
+    sheet = workbook[sheet_name]
+    for row_index in range(len(data)):
+        for col_index in range(len(data[row_index])):
+            sheet.cell(
+                row=row_index + 1,
+                column=col_index + 1
+            ).value = data[row_index][col_index]
+    return workbook
+
+
 def add_new_sheet(file_path, new_sheet_name):
     if (has_sheet(file_path, new_sheet_name)):
         raise Exception
@@ -36,10 +65,17 @@ def order_sheets_alphabetically(
     dest_file_path,
     reverse=False
 ):
-    wb = load_workbook(file_path, use_iterators=True)
-    sheet = wb.worksheets[0]
-    row_count = sheet.max_row
-    column_count = sheet.max_column
+    wb = load_workbook(filename=file_path)
+    sheet_names = wb.sheetnames
+    sheet_names.sort(reverse=reverse)
+    # create empty workbook first
+    destBook = Workbook()
+    for sheet_name in sheet_names:
+        data = read_sheet_data(file_path, sheet_name)
+        destBook = write_sheet_data(destBook, sheet_name, data)
+    # finally remove unnecessary sheet
+    del destBook['Sheet']
+    destBook.save(dest_file_path)
     return True
 
 

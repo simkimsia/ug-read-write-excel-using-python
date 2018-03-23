@@ -84,3 +84,51 @@ class TestOpenPyXLCrud(unittest.TestCase):
         # exception is thrown
         with self.assertRaises(Exception):
             index.delete_sheet(save_path, new_sheet_name)
+
+    def test_order_sheets(self):
+        # python35 cannot write to Path, so use os.path
+        tests_path = os.path.dirname(
+            os.path.abspath(__file__))
+        project_root = os.path.dirname(
+            tests_path)
+        examples_path = os.path.join(project_root, 'examples')
+        sample_xlsx_path = os.path.join(
+            examples_path, 'c73_crud_sheets', '3_sheets_acb.xlsx')
+        self.assertTrue(
+            Path(sample_xlsx_path).is_file())
+        save_path_abc = os.path.join(
+            os.path.dirname(
+                os.path.abspath(__file__)),
+            'c73_3_sheets_abc.xlsx')
+        self.assertFalse(
+            Path(save_path_abc).is_file())
+        index.order_sheets_alphabetically(
+            sample_xlsx_path, dest_file_path=save_path_abc)
+        self.assertTrue(
+            Path(save_path_abc).is_file())
+
+        sheets = index.list_all_sheet_names(sample_xlsx_path)
+        expected_sheets = ['a', 'c', 'b']
+        self.assertListEqual(sheets, expected_sheets)
+
+        sheets = index.list_all_sheet_names(save_path_abc)
+        expected_sheets = ['a', 'b', 'c']
+        self.assertListEqual(sheets, expected_sheets)
+
+        save_path_cba = os.path.join(
+            os.path.dirname(
+                os.path.abspath(__file__)),
+            'c73_3_sheets_cba.xlsx')
+        self.assertFalse(
+            Path(save_path_cba).is_file())
+        index.order_sheets_alphabetically(
+            sample_xlsx_path,
+            dest_file_path=save_path_cba,
+            reverse=True
+        )
+        self.assertTrue(
+            Path(save_path_cba).is_file())
+
+        sheets = index.list_all_sheet_names(save_path_cba)
+        expected_sheets = ['c', 'b', 'a']
+        self.assertListEqual(sheets, expected_sheets)
