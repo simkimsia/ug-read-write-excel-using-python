@@ -1,5 +1,6 @@
 from openpyxl import load_workbook, Workbook
-
+from examples.c72_rename_validate_sheet_name.custom \
+    import index as rename_index
 
 def list_all_sheet_names(file_path='../3_sheets.xlsx'):
     wb = load_workbook(filename=file_path)
@@ -83,5 +84,21 @@ def order_sheets_alphabetically(
 # as it involves copying
 # data from one sheet in one book to another book
 # this is also why I recommend pyexcel
-def rename_sheet(file_path, sheet_name, new_sheet_name):
+def rename_sheet(file_path, dest_file_path, sheet_name, new_sheet_name):
+    if (not has_sheet(file_path, sheet_name)):
+        raise Exception
+    if (has_sheet(file_path, new_sheet_name)):
+        raise Exception
+    new_sheet_name = rename_index.sanitise_sheet_name(new_sheet_name)
+    sheet_names = list_all_sheet_names(file_path)
+    destBook = Workbook()
+    for original_sheet_name in sheet_names:
+        saved_as = original_sheet_name
+        if original_sheet_name == sheet_name:
+            saved_as = new_sheet_name
+        data = read_sheet_data(file_path, sheet_name)
+        destBook = write_sheet_data(destBook, saved_as, data)
+    # finally remove unnecessary sheet
+    del destBook['Sheet']
+    destBook.save(dest_file_path)
     return True

@@ -15,6 +15,19 @@ def has_sheet(file_path, looking_for_sheet_name):
     return looking_for_sheet_name in sheet_names
 
 
+def read_sheet_data(file_path, sheet_name):
+    book = pyexcel.get_book(file_name=file_path)
+    sheet = book[sheet_name]
+    # return sheet.content
+    return sheet.to_array()
+
+
+def write_sheet_data(sheet_name, data):
+    workbook_data = OrderedDict()
+    workbook_data.update({sheet_name: data})
+    return workbook_data
+
+
 def add_new_sheet(file_path, new_sheet_name):
     if (has_sheet(file_path, new_sheet_name)):
         raise Exception

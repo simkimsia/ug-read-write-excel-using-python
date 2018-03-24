@@ -132,3 +132,36 @@ class TestOpenPyXLCrud(unittest.TestCase):
         sheets = index.list_all_sheet_names(save_path_cba)
         expected_sheets = ['c', 'b', 'a']
         self.assertListEqual(sheets, expected_sheets)
+
+    def test_rename_sheet(self):
+        # python35 cannot write to Path, so use os.path
+        tests_path = os.path.dirname(
+            os.path.abspath(__file__))
+        project_root = os.path.dirname(
+            tests_path)
+        examples_path = os.path.join(project_root, 'examples')
+        sample_xlsx_path = os.path.join(
+            examples_path, 'c73_crud_sheets', '3_sheets_acb.xlsx')
+        self.assertTrue(
+            Path(sample_xlsx_path).is_file())
+        save_path_fcb = os.path.join(
+            os.path.dirname(
+                os.path.abspath(__file__)),
+            'c73_3_sheets_fcb.xlsx')
+        self.assertFalse(
+            Path(save_path_fcb).is_file())
+        index.rename_sheet(
+            sample_xlsx_path,
+            dest_file_path=save_path_fcb,
+            sheet_name='a',
+            new_sheet_name='f')
+        self.assertTrue(
+            Path(save_path_fcb).is_file())
+
+        sheets = index.list_all_sheet_names(sample_xlsx_path)
+        expected_sheets = ['a', 'c', 'b']
+        self.assertListEqual(sheets, expected_sheets)
+
+        sheets = index.list_all_sheet_names(save_path_fcb)
+        expected_sheets = ['f', 'c', 'b']
+        self.assertListEqual(sheets, expected_sheets)
