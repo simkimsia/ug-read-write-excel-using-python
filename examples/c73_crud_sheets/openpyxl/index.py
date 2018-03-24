@@ -2,6 +2,7 @@ from openpyxl import load_workbook, Workbook
 from examples.c72_rename_validate_sheet_name.custom \
     import index as rename_index
 
+
 def list_all_sheet_names(file_path='../3_sheets.xlsx'):
     wb = load_workbook(filename=file_path)
     return wb.sheetnames
