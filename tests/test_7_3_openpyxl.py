@@ -4,6 +4,7 @@ from examples.c71_create_empty_excel_file.openpyxl \
     import index as create_index
 import unittest
 import os
+from openpyxl import Workbook
 
 
 class TestOpenPyXLCrud(unittest.TestCase):
@@ -189,3 +190,31 @@ class TestOpenPyXLCrud(unittest.TestCase):
         non_existent_sheet = 'non_existent_sheet'
         with self.assertRaises(Exception):
             data = index.read_sheet_data(sample_xlsx_path, non_existent_sheet)
+
+    def test_write_sheet_data(self):
+        # python35 cannot write to Path, so use os.path
+        cols, rows = 1, 1
+        expected_data = [[0 for x in range(cols)] for y in range(rows)]
+        expected_data[0][0] = 'a'
+        workbook = Workbook()
+        sheetname = 'a'
+        after_written_workbook = index.write_sheet_data(
+            workbook, sheetname, expected_data
+        )
+        saved_sheet = after_written_workbook[sheetname]
+        savedcols, savedrows = saved_sheet.max_column, saved_sheet.max_row
+        saved_data = [[0 for x in range(savedcols)] for y in range(savedrows)]
+        for row_index, row in enumerate(
+            saved_sheet.iter_rows(
+                max_col=saved_sheet.max_column,
+                max_row=saved_sheet.max_row
+            )
+        ):
+            for col_index, cell in enumerate(row):
+                saved_data[row_index][col_index] = cell.value
+        self.assertListEqual(expected_data, saved_data)
+
+        with self.assertRaises(Exception):
+            after_written_workbook = index.write_sheet_data(
+                after_written_workbook, sheetname, expected_data
+            )

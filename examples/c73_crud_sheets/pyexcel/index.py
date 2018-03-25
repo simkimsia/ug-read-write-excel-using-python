@@ -24,8 +24,10 @@ def read_sheet_data(file_path, sheet_name):
     return sheet.to_array()
 
 
-def write_sheet_data(sheet_name, data):
-    workbook_data = OrderedDict()
+def write_sheet_data(workbook_data, sheet_name, data):
+    if sheet_name in workbook_data:
+        raise Exception
+    # workbook_data is expected to be OrderedDict
     workbook_data.update({sheet_name: data})
     return workbook_data
 
