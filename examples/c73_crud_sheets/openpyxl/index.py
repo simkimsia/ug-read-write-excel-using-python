@@ -33,6 +33,8 @@ def read_sheet_data(file_path, sheet_name):
 
 
 def write_sheet_data(workbook, sheet_name, data):
+    if sheet_name in workbook.sheetnames:
+        raise Exception
     workbook.create_sheet(sheet_name)
     sheet = workbook[sheet_name]
     for row_index in range(len(data)):
