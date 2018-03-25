@@ -16,6 +16,8 @@ def has_sheet(file_path, looking_for_sheet_name):
 
 
 def read_sheet_data(file_path, sheet_name):
+    if not has_sheet(file_path, sheet_name):
+        raise Exception
     book = pyexcel.get_book(file_name=file_path)
     sheet = book[sheet_name]
     # return sheet.content

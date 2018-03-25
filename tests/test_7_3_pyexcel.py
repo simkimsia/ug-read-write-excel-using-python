@@ -165,3 +165,26 @@ class TestPyExcelCrud(unittest.TestCase):
         sheets = index.list_all_sheet_names(save_path_fcb)
         expected_sheets = ['f', 'c', 'b']
         self.assertListEqual(sheets, expected_sheets)
+
+    def test_read_sheet_data(self):
+        # python35 cannot write to Path, so use os.path
+        tests_path = os.path.dirname(
+            os.path.abspath(__file__))
+        project_root = os.path.dirname(
+            tests_path)
+        examples_path = os.path.join(project_root, 'examples')
+        sample_xlsx_path = os.path.join(
+            examples_path, 'c73_crud_sheets', '3_sheets_acb.xlsx')
+        self.assertTrue(
+            Path(sample_xlsx_path).is_file())
+        sheet_name = 'a'
+
+        data = index.read_sheet_data(sample_xlsx_path, sheet_name)
+        cols, rows = 1, 1
+        expected_data = [[0 for x in range(cols)] for y in range(rows)]
+        expected_data[0][0] = 'a'
+        self.assertListEqual(data, expected_data)
+
+        non_existent_sheet = 'non_existent_sheet'
+        with self.assertRaises(Exception):
+            data = index.read_sheet_data(sample_xlsx_path, non_existent_sheet)
