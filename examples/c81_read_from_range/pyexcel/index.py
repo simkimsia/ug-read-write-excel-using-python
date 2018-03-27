@@ -1,18 +1,19 @@
-from pyexcel import load_workbook, Workbook
-import re
-
-
-def get_row_col_stats(start_cell, end_cell):
-    # separate the number and letters from start_cell
-    start_row_in_letter = extract_out_letters(start_cell)
-    start_col = extract_out_numbers(start_cell)
-    # separate the number and letters from end_cell
-    end_row_in_letter = extract_out_letters(end_cell)
-    end_col = extract_out_numbers(end_cell)
+from pyexcel import get_sheet
+from examples.c80_convert_indices_coordinates.openpyxl \
+    import index as convert_index
 
 
 def read_from_range(file_path, sheet_name, start_cell, end_cell):
-    row_col_stats = get_row_col_stats(start_cell, end_cell)
-    wb = load_workbook(file_path, use_iterators=True)
-    ws = wb[sheet_name]
-    return ws[start_cell:end_cell]
+    start_cell_index = convert_index.coordinate_to_index(start_cell)
+    end_cell_index = convert_index.coordinate_to_index(end_cell)
+    start_col = start_cell_index[0]
+    start_row = start_cell_index[1]
+    end_col = end_cell_index[0]
+    end_row = end_cell_index[1]
+    row_limit = end_row - start_row
+    col_limit = end_col - start_col
+    return get_sheet(
+        file_name=file_path,
+        start_row=start_row, row_limit=row_limit,
+        start_col=start_col, col_limit=col_limit
+    )
