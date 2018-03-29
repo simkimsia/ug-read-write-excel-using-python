@@ -54,13 +54,8 @@ def order_sheets_alphabetically(
     reverse=False
 ):
     book = pyexcel.get_book(file_name=file_path)
-    sheet_names = book.sheet_names()
-    sheet_names.sort(reverse=reverse)
-    data = OrderedDict()
-    for sheet_name in sheet_names:
-        data.update({sheet_name: book[sheet_name]})
-    return pyexcel.save_book_as(
-        bookdict=data, dest_file_name=dest_file_path)
+    book.sort_sheets(reverse=reverse)
+    return book.save_as(dest_file_path)
 
 
 def rename_sheet(file_path, dest_file_path, sheet_name, new_sheet_name):
