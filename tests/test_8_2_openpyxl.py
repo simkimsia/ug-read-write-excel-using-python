@@ -6,16 +6,22 @@ from examples.c71_create_empty_excel_file.openpyxl \
     import index as create_index
 import unittest
 import os
+import sys
+import pytest
 
 
 class TestOpenPyXLWriteRange(unittest.TestCase):
 
     def setUp(self):
+        if pytest.config.getoption("--skip-updown"):
+            return
         dir_path = Path(__file__).resolve().parent
         for f in dir_path.glob('*.xlsx'):
             f.unlink()
 
     def tearDown(self):
+        if pytest.config.getoption("--skip-updown"):
+            return
         dir_path = Path(__file__).resolve().parent
         for f in dir_path.glob('*.xlsx'):
             f.unlink()
