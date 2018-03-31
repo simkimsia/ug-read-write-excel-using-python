@@ -1,8 +1,8 @@
 from examples.c80_convert_indices_coordinates.openpyxl import index
-import unittest
+from base_test_cases import ExcelTest
 
 
-class TestOpenPyXLIndicesCoordinates(unittest.TestCase):
+class TestOpenPyXLIndicesCoordinates(ExcelTest):
 
     def test_coordinates_to_indices(self):
         coordinate_string = 'A4'

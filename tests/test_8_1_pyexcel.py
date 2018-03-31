@@ -1,20 +1,10 @@
 from pathlib import Path
 from examples.c81_read_from_range.pyexcel import index
-import unittest
+from base_test_cases import ExcelTest
 import os
 
 
-class TestPyExcelReadRange(unittest.TestCase):
-
-    def setUp(self):
-        dir_path = Path(__file__).resolve().parent
-        for f in dir_path.glob('*.xlsx'):
-            f.unlink()
-
-    def tearDown(self):
-        dir_path = Path(__file__).resolve().parent
-        for f in dir_path.glob('*.xlsx'):
-            f.unlink()
+class TestPyExcelReadRange(ExcelTest):
 
     def test_read_from_range(self):
         # python35 cannot write to Path, so use os.path
