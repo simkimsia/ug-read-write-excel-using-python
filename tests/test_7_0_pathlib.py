@@ -1,20 +1,11 @@
 from pathlib import Path
 from examples.c70_read_file_format.pathlib import index
 from examples.c71_create_empty_excel_file.pyexcel import index as create
-import unittest
 import os
+from base_test_cases import ExcelTest
 
 
-class TestPathLibReadFileFormat(unittest.TestCase):
-    def setUp(self):
-        dir_path = Path(__file__).resolve().parent
-        for f in dir_path.glob('*.xls*'):
-            f.unlink()
-
-    def tearDown(self):
-        dir_path = Path(__file__).resolve().parent
-        for f in dir_path.glob('*.xls*'):
-            f.unlink()
+class TestPathLibReadFileFormat(ExcelTest):
 
     def test_xlsx_can_be_read(self):
         # python35 cannot write to Path, so use os.path

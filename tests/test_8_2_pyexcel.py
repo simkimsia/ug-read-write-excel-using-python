@@ -8,7 +8,6 @@ import unittest
 import os
 
 
-
 class TestPyExcelWriteRange(unittest.TestCase):
 
     def setUp(self):
