@@ -2,21 +2,12 @@ from pathlib import Path
 from examples.c73_crud_sheets.pyexcel import index
 from examples.c71_create_empty_excel_file.pyexcel \
     import index as create_index
-import unittest
 import os
 from collections import OrderedDict
+from base_test_cases import ExcelTest
 
 
-class TestPyExcelCrud(unittest.TestCase):
-    def setUp(self):
-        dir_path = Path(__file__).resolve().parent
-        for f in dir_path.glob('*.xlsx'):
-            f.unlink()
-
-    def tearDown(self):
-        dir_path = Path(__file__).resolve().parent
-        for f in dir_path.glob('*.xlsx'):
-            f.unlink()
+class TestPyExcelCrud(ExcelTest):
 
     def test_list_all_sheets(self):
         # python35 cannot write to Path, so use os.path

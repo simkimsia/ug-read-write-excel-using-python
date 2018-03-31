@@ -2,21 +2,12 @@ from pathlib import Path
 from examples.c73_crud_sheets.openpyxl import index
 from examples.c71_create_empty_excel_file.openpyxl \
     import index as create_index
-import unittest
 import os
 from openpyxl import Workbook
+from base_test_cases import ExcelTest
 
 
-class TestOpenPyXLCrud(unittest.TestCase):
-    def setUp(self):
-        dir_path = Path(__file__).resolve().parent
-        for f in dir_path.glob('*.xlsx'):
-            f.unlink()
-
-    def tearDown(self):
-        dir_path = Path(__file__).resolve().parent
-        for f in dir_path.glob('*.xlsx'):
-            f.unlink()
+class TestOpenPyXLCrud(ExcelTest):
 
     def test_list_all_sheets(self):
         # python35 cannot write to Path, so use os.path

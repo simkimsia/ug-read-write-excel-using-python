@@ -1,19 +1,10 @@
 from pathlib import Path
 from examples.c71_create_empty_excel_file.pyexcel import index
-import unittest
 import os
+from base_test_cases import ExcelTest
 
 
-class TestPyExcelEmptyFile(unittest.TestCase):
-    def setUp(self):
-        dir_path = Path(__file__).resolve().parent
-        for f in dir_path.glob('*.xlsx'):
-            f.unlink()
-
-    def tearDown(self):
-        dir_path = Path(__file__).resolve().parent
-        for f in dir_path.glob('*.xlsx'):
-            f.unlink()
+class TestPyExcelEmptyFile(ExcelTest):
 
     def test_save_using_workbook_object(self):
         # python35 cannot write to Path, so use os.path

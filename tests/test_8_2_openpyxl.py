@@ -4,27 +4,11 @@ from examples.c81_read_from_range.openpyxl \
     import index as read_from_range_index
 from examples.c71_create_empty_excel_file.openpyxl \
     import index as create_index
-import unittest
 import os
-import sys
-import pytest
+from base_test_cases import ExcelTest
 
 
-class TestOpenPyXLWriteRange(unittest.TestCase):
-
-    def setUp(self):
-        if pytest.config.getoption("--skip-updown"):
-            return
-        dir_path = Path(__file__).resolve().parent
-        for f in dir_path.glob('*.xlsx'):
-            f.unlink()
-
-    def tearDown(self):
-        if pytest.config.getoption("--skip-updown"):
-            return
-        dir_path = Path(__file__).resolve().parent
-        for f in dir_path.glob('*.xlsx'):
-            f.unlink()
+class TestOpenPyXLFreezePanes(ExcelTest):
 
     def test_write_to_range(self):
         # python35 cannot write to Path, so use os.path
