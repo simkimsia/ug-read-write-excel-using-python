@@ -1,14 +1,14 @@
 from pathlib import Path
-from examples.c82_write_to_range.openpyxl import index
-from examples.c81_read_from_range.openpyxl \
+from examples.c82_write_to_range.pyexcel import index
+from examples.c81_read_from_range.pyexcel \
     import index as read_from_range_index
-from examples.c71_create_empty_excel_file.openpyxl \
+from examples.c71_create_empty_excel_file.pyexcel \
     import index as create_index
 import os
 from base_test_cases import ExcelTest
 
 
-class TestOpenPyXLWriteToRange(ExcelTest):
+class TestPyExcelWriteToRange(ExcelTest):
 
     def test_write_to_range(self):
         # python35 cannot write to Path, so use os.path
@@ -21,9 +21,9 @@ class TestOpenPyXLWriteToRange(ExcelTest):
             Path(write_xlsx_path).is_file())
 
         write_data = [
-            ['a1', 'b1', 'c1', ],
-            ['a2', 'b2', 'c2', ],
-            ['a3', 'b3', 'c3', ],
+            ['a1', 'b1', 'c1'],
+            ['a2', 'b2', 'c2'],
+            ['a3', 'b3', 'c3'],
         ]
         index.write_to_range(
             write_xlsx_path, 'Sheet', 'B2', 'D4', write_data)
@@ -34,8 +34,9 @@ class TestOpenPyXLWriteToRange(ExcelTest):
             'a2', 'b2', 'c2',
             'a3', 'b3', 'c3',
         ]
+        print(range)
         counter = 0
         for row in range:
-            for cell in row:
-                self.assertEqual(cell.value, expected_data[counter])
+            for cellvalue in row:
+                self.assertEqual(cellvalue, expected_data[counter])
                 counter += 1

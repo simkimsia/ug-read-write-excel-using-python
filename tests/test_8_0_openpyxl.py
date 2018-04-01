@@ -39,6 +39,12 @@ class TestOpenPyXLIndicesCoordinates(ExcelTest):
         coordinate_string = index.index_to_coordinate(indices, zero_based)
         self.assertEqual(coordinate_string, expected_coordinate_string)
 
+        indices = (1, 1)
+        zero_based = True
+        expected_coordinate_string = 'B2'
+        coordinate_string = index.index_to_coordinate(indices, zero_based)
+        self.assertEqual(coordinate_string, expected_coordinate_string)
+
         indices = (28, 24)
         zero_based = False
         expected_coordinate_string = 'AB24'
