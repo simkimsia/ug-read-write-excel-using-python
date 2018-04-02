@@ -34,7 +34,6 @@ class TestPyExcelWriteToRange(ExcelTest):
             'a2', 'b2', 'c2',
             'a3', 'b3', 'c3',
         ]
-        print(range)
         counter = 0
         for row in range:
             for cellvalue in row:

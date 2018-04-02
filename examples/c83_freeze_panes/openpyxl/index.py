@@ -13,11 +13,11 @@ def freeze_pane(file_path, sheet_name, cell_or_string):
     wb = load_workbook(file_path)
     ws = wb[sheet_name]
     ws.freeze_panes = cell_or_string
-    return wb.save_as(file_path)
+    return wb.save(file_path)
 
 
-def unfreeze_pane(file_path, sheet_name, cell_or_string):
+def unfreeze_pane(file_path, sheet_name):
     wb = load_workbook(file_path)
     ws = wb[sheet_name]
     ws.freeze_panes = None
-    return wb.save_as(file_path)
+    return wb.save(file_path)
