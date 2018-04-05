@@ -29,3 +29,26 @@ class TestOpenPyXLFontStyles(ExcelTest):
         new_size = 20
         a1 = index.set_font_size(wb, new_size)
         self.assertEqual(a1.font.size, new_size)
+
+    def test_font_style(self):
+        wb = Workbook()
+        ws = wb.active
+        a1 = ws['A1']
+        a1_font = a1.font
+        default_bold = False
+        default_italic = False
+        default_underline = None
+        default_style = 'Calibri'
+        self.assertEqual(a1_font.bold, default_bold)
+        self.assertEqual(a1_font.italic, default_italic)
+        self.assertEqual(a1_font.underline, default_underline)
+        self.assertEqual(a1_font.name, default_style)
+        new_style = "Helvetica"
+        a1 = index.set_font_style(wb, new_style)
+        self.assertEqual(a1.font.name, new_style)
+        self.assertTrue(a1.font.bold)
+        self.assertTrue(a1.font.italic)
+        four_kinds_of_underlines = [
+            'singleAccounting',
+            'double', 'single', 'doubleAccounting']
+        self.assertEqual(a1.font.underline, "single")
