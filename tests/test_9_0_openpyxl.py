@@ -1,5 +1,5 @@
 from openpyxl.styles import colors, Font
-from examples.c91_font_styles.openpyxl import index
+from examples.c90_font_styles.openpyxl import index
 from openpyxl import Workbook
 from base_test_cases import ExcelTest
 
