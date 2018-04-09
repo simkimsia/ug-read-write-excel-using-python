@@ -49,6 +49,6 @@ class TestOpenPyXLFontStyles(ExcelTest):
         self.assertTrue(a1.font.bold)
         self.assertTrue(a1.font.italic)
         four_kinds_of_underlines = [
-            'singleAccounting',
-            'double', 'single', 'doubleAccounting']
-        self.assertEqual(a1.font.underline, "single")
+            'single', 'singleAccounting',
+            'double',  'doubleAccounting']
+        self.assertEqual(a1.font.underline, four_kinds_of_underlines[0])
