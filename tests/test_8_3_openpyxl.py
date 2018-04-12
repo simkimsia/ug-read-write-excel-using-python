@@ -1,6 +1,6 @@
 from pathlib import Path
-from examples.c83_freeze_panes.openpyxl import index
-from examples.c71_create_empty_excel_file.openpyxl \
+from examples.c08_3_freeze_panes.openpyxl import index
+from examples.c07_1_create_empty_excel_file.openpyxl \
     import index as create_index
 from base_test_cases import ExcelTest
 import os
@@ -16,7 +16,7 @@ class TestOpenPyXLFreezePanes(ExcelTest):
             tests_path)
         examples_path = os.path.join(project_root, 'examples')
         sample_xlsx_path = os.path.join(
-            examples_path, 'c83_freeze_panes', 'freeze_panes.xlsx')
+            examples_path, 'c08_3_freeze_panes', 'freeze_panes.xlsx')
         self.assertTrue(
             Path(sample_xlsx_path).is_file())
 

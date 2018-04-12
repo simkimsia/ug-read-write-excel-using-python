@@ -1,5 +1,5 @@
 from pyexcel import get_book
-from examples.c80_convert_indices_coordinates.openpyxl \
+from examples.c08_0_convert_indices_coordinates.openpyxl \
     import index as convert_index
 
 

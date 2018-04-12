@@ -1,5 +1,5 @@
 from openpyxl.styles import Border, Side
-from examples.c93_border.openpyxl import index
+from examples.c09_3_border.openpyxl import index
 from openpyxl import Workbook
 from base_test_cases import ExcelTest
 

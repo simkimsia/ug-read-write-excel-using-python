@@ -1,6 +1,6 @@
 from pathlib import Path
-from examples.c70_read_file_format.pathlib import index
-from examples.c71_create_empty_excel_file.pyexcel import index as create
+from examples.c07_1_create_empty_excel_file.pyexcel import index as create
+from examples.c07_0_read_file_format.pathlib import index
 import os
 from base_test_cases import ExcelTest
 
@@ -12,7 +12,7 @@ class TestPathLibReadFileFormat(ExcelTest):
         save_path_xlsx = os.path.join(
             os.path.dirname(
                 os.path.abspath(__file__)),
-            'c70_read_xlsx.xlsx')
+            'c07_0_read_xlsx.xlsx')
         create.save_empty_file(save_path_xlsx)
         self.assertTrue(
             Path(save_path_xlsx).is_file())
@@ -25,7 +25,7 @@ class TestPathLibReadFileFormat(ExcelTest):
         save_path_xls = os.path.join(
             os.path.dirname(
                 os.path.abspath(__file__)),
-            'c70_openpyxl_read_xls.xls')
+            'c07_0_openpyxl_read_xls.xls')
         create.save_empty_file_another_way(save_path_xls)
         self.assertTrue(
             Path(save_path_xls).is_file())

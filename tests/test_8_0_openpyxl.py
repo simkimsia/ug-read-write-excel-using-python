@@ -1,4 +1,4 @@
-from examples.c80_convert_indices_coordinates.openpyxl import index
+from examples.c08_0_convert_indices_coordinates.openpyxl import index
 from base_test_cases import ExcelTest
 
 

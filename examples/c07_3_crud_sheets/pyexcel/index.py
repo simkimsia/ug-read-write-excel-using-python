@@ -1,7 +1,7 @@
 import pyexcel
 from pyexcel import Sheet
 from collections import OrderedDict
-from examples.c72_rename_validate_sheet_name.custom \
+from examples.c07_2_rename_validate_sheet_name.custom \
     import index as rename_index
 
 

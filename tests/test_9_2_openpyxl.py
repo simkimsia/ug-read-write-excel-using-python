@@ -1,5 +1,5 @@
 from openpyxl.styles import PatternFill
-from examples.c92_fill_color.openpyxl import index
+from examples.c09_2_fill_color.openpyxl import index
 from openpyxl import Workbook
 from base_test_cases import ExcelTest
 

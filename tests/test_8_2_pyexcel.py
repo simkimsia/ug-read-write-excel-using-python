@@ -1,8 +1,8 @@
 from pathlib import Path
-from examples.c82_write_to_range.pyexcel import index
-from examples.c81_read_from_range.pyexcel \
+from examples.c08_2_write_to_range.pyexcel import index
+from examples.c08_1_read_from_range.pyexcel \
     import index as read_from_range_index
-from examples.c71_create_empty_excel_file.pyexcel \
+from examples.c07_1_create_empty_excel_file.pyexcel \
     import index as create_index
 import os
 from base_test_cases import ExcelTest

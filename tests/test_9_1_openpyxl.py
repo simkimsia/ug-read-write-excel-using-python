@@ -1,7 +1,7 @@
 from pathlib import Path
-from examples.c71_create_empty_excel_file.openpyxl \
+from examples.c07_1_create_empty_excel_file.openpyxl \
     import index as create_index
-from examples.c91_charts.openpyxl import index
+from examples.c09_1_charts.openpyxl import index
 from openpyxl import load_workbook
 from base_test_cases import ExcelTest
 import os

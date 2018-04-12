@@ -1,5 +1,5 @@
 from pathlib import Path
-from examples.c81_read_from_range.pyexcel import index
+from examples.c08_1_read_from_range.pyexcel import index
 from base_test_cases import ExcelTest
 import os
 
@@ -14,7 +14,7 @@ class TestPyExcelReadRange(ExcelTest):
             tests_path)
         examples_path = os.path.join(project_root, 'examples')
         sample_xlsx_path = os.path.join(
-            examples_path, 'c81_read_from_range', '9cell_range.xlsx')
+            examples_path, 'c08_1_read_from_range', '9cell_range.xlsx')
         self.assertTrue(
             Path(sample_xlsx_path).is_file())
         sheet = index.read_from_range(sample_xlsx_path, 'range', 'A1', 'C3')

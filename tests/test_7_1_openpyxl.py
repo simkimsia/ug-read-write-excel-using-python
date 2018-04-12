@@ -1,5 +1,5 @@
 from pathlib import Path
-from examples.c71_create_empty_excel_file.openpyxl import index
+from examples.c07_1_create_empty_excel_file.openpyxl import index
 import os
 from base_test_cases import ExcelTest
 
@@ -11,7 +11,7 @@ class TestOpenPyXLEmptyFile(ExcelTest):
         save_path = os.path.join(
             os.path.dirname(
                 os.path.abspath(__file__)),
-            'c71_openpyxl_empty.xlsx')
+            'c07_1_openpyxl_empty.xlsx')
         self.assertFalse(
             Path(save_path).is_file())
         index.save_empty_file(save_path)

@@ -1,5 +1,5 @@
 from openpyxl import load_workbook, Workbook
-from examples.c72_rename_validate_sheet_name.custom \
+from examples.c07_2_rename_validate_sheet_name.custom \
     import index as rename_index
 
 

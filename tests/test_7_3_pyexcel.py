@@ -1,6 +1,6 @@
 from pathlib import Path
-from examples.c73_crud_sheets.pyexcel import index
-from examples.c71_create_empty_excel_file.pyexcel \
+from examples.c07_3_crud_sheets.pyexcel import index
+from examples.c07_1_create_empty_excel_file.pyexcel \
     import index as create_index
 import os
 from collections import OrderedDict
@@ -17,7 +17,7 @@ class TestPyExcelCrud(ExcelTest):
             tests_path)
         examples_path = os.path.join(project_root, 'examples')
         sample_xlsx_path = os.path.join(
-            examples_path, 'c73_crud_sheets', '3_sheets.xlsx')
+            examples_path, 'c07_3_crud_sheets', '3_sheets.xlsx')
         self.assertTrue(
             Path(sample_xlsx_path).is_file())
         sheets = index.list_all_sheet_names(sample_xlsx_path)
@@ -32,7 +32,7 @@ class TestPyExcelCrud(ExcelTest):
             tests_path)
         examples_path = os.path.join(project_root, 'examples')
         sample_xlsx_path = os.path.join(
-            examples_path, 'c73_crud_sheets', '3_sheets.xlsx')
+            examples_path, 'c07_3_crud_sheets', '3_sheets.xlsx')
         self.assertTrue(
             Path(sample_xlsx_path).is_file())
         self.assertTrue(index.has_sheet(sample_xlsx_path, 'Sheet1'))
@@ -43,7 +43,7 @@ class TestPyExcelCrud(ExcelTest):
         save_path = os.path.join(
             os.path.dirname(
                 os.path.abspath(__file__)),
-            'c73_pyexcel_empty.xlsx')
+            'c07_3_pyexcel_empty.xlsx')
         self.assertFalse(
             Path(save_path).is_file())
         create_index.save_empty_file_another_way(save_path)
@@ -63,7 +63,7 @@ class TestPyExcelCrud(ExcelTest):
         save_path = os.path.join(
             os.path.dirname(
                 os.path.abspath(__file__)),
-            'c73_pyexcel_empty.xlsx')
+            'c07_3_pyexcel_empty.xlsx')
         self.assertFalse(
             Path(save_path).is_file())
         create_index.save_empty_file_another_way(save_path)
@@ -85,13 +85,13 @@ class TestPyExcelCrud(ExcelTest):
             tests_path)
         examples_path = os.path.join(project_root, 'examples')
         sample_xlsx_path = os.path.join(
-            examples_path, 'c73_crud_sheets', '3_sheets_acb.xlsx')
+            examples_path, 'c07_3_crud_sheets', '3_sheets_acb.xlsx')
         self.assertTrue(
             Path(sample_xlsx_path).is_file())
         save_path_abc = os.path.join(
             os.path.dirname(
                 os.path.abspath(__file__)),
-            'c73_3_sheets_abc.xlsx')
+            'c07_3_3_sheets_abc.xlsx')
         self.assertFalse(
             Path(save_path_abc).is_file())
         index.order_sheets_alphabetically(
@@ -110,7 +110,7 @@ class TestPyExcelCrud(ExcelTest):
         save_path_cba = os.path.join(
             os.path.dirname(
                 os.path.abspath(__file__)),
-            'c73_3_sheets_cba.xlsx')
+            'c07_3_3_sheets_cba.xlsx')
         self.assertFalse(
             Path(save_path_cba).is_file())
         index.order_sheets_alphabetically(
@@ -133,13 +133,13 @@ class TestPyExcelCrud(ExcelTest):
             tests_path)
         examples_path = os.path.join(project_root, 'examples')
         sample_xlsx_path = os.path.join(
-            examples_path, 'c73_crud_sheets', '3_sheets_acb.xlsx')
+            examples_path, 'c07_3_crud_sheets', '3_sheets_acb.xlsx')
         self.assertTrue(
             Path(sample_xlsx_path).is_file())
         save_path_fcb = os.path.join(
             os.path.dirname(
                 os.path.abspath(__file__)),
-            'c73_3_sheets_fcb.xlsx')
+            'c07_3_3_sheets_fcb.xlsx')
         self.assertFalse(
             Path(save_path_fcb).is_file())
         index.rename_sheet(
@@ -166,7 +166,7 @@ class TestPyExcelCrud(ExcelTest):
             tests_path)
         examples_path = os.path.join(project_root, 'examples')
         sample_xlsx_path = os.path.join(
-            examples_path, 'c73_crud_sheets', '3_sheets_acb.xlsx')
+            examples_path, 'c07_3_crud_sheets', '3_sheets_acb.xlsx')
         self.assertTrue(
             Path(sample_xlsx_path).is_file())
         sheet_name = 'a'

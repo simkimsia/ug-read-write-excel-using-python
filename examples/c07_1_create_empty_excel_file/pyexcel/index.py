@@ -1,7 +1,7 @@
 import pyexcel
 
 
-def save_empty_file(save_as_path='c71_pyexcel_empty.xlsx'):
+def save_empty_file(save_as_path='c07_1_pyexcel_empty.xlsx'):
     '''
     This works for xlsx only
     '''
@@ -9,7 +9,7 @@ def save_empty_file(save_as_path='c71_pyexcel_empty.xlsx'):
     book.save_as(save_as_path)
 
 
-def save_empty_file_another_way(save_as_path='c71_pyexcel_empty.xlsx'):
+def save_empty_file_another_way(save_as_path='c07_1_pyexcel_empty.xlsx'):
     '''
     This works for both xlsx and xls
     '''
