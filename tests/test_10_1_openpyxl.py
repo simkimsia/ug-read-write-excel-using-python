@@ -20,7 +20,7 @@ class TestOpenPyXLPrintArea(ExcelTest):
 
         workbook = load_workbook(write_xlsx_path)
         worksheet = workbook.active
-
+        self.assertIsNone(worksheet.print_area)
         index.set_print_area(write_xlsx_path, 'A1:U50')
         wb_after_set_print_area = load_workbook(write_xlsx_path)
         ws_after_set_print_area = wb_after_set_print_area.active
