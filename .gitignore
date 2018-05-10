@@ -1,6 +1,7 @@
 **/*.xlsx
 **/*.csv
 **/*.pyc
+**/*.pdf
 .cache/
 .pytest_cache/
 .idea/
