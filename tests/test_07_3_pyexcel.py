@@ -173,7 +173,7 @@ class TestPyExcelCrud(ExcelTest):
 
         data = index.read_sheet_data(sample_xlsx_path, sheet_name)
         cols, rows = 1, 1
-        expected_data = [[0 for x in range(cols)] for y in range(rows)]
+        expected_data = [[0 for _ in range(cols)] for _ in range(rows)]
         expected_data[0][0] = 'a'
         self.assertListEqual(data, expected_data)
 
@@ -184,7 +184,7 @@ class TestPyExcelCrud(ExcelTest):
     def test_write_sheet_data(self):
         # python35 cannot write to Path, so use os.path
         cols, rows = 1, 1
-        expected_data = [[0 for x in range(cols)] for y in range(rows)]
+        expected_data = [[0 for _ in range(cols)] for _ in range(rows)]
         expected_data[0][0] = 'a'
         sheetname = 'a'
         workbook_data = OrderedDict()

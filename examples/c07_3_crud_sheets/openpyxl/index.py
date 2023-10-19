@@ -20,7 +20,7 @@ def read_sheet_data(file_path, sheet_name):
     sheet = wb[sheet_name]
     data = []
     cols, rows = sheet.max_column, sheet.max_row
-    data = [[0 for x in range(cols)] for y in range(rows)]
+    data = [[0 for _ in range(cols)] for _ in range(rows)]
     for row_index, row in enumerate(
         sheet.iter_rows(
             max_col=sheet.max_column,
@@ -99,7 +99,7 @@ def rename_sheet(file_path, dest_file_path, sheet_name, new_sheet_name):
     destBook = Workbook()
     for original_sheet_name in sheet_names:
         saved_as = original_sheet_name
-        if original_sheet_name == sheet_name:
+        if saved_as == sheet_name:
             saved_as = new_sheet_name
         data = read_sheet_data(file_path, sheet_name)
         destBook = write_sheet_data(destBook, saved_as, data)

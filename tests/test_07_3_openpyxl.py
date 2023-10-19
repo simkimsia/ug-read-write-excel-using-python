@@ -174,7 +174,7 @@ class TestOpenPyXLCrud(ExcelTest):
 
         data = index.read_sheet_data(sample_xlsx_path, sheet_name)
         cols, rows = 1, 1
-        expected_data = [[0 for x in range(cols)] for y in range(rows)]
+        expected_data = [[0 for _ in range(cols)] for _ in range(rows)]
         expected_data[0][0] = 'a'
         self.assertListEqual(data, expected_data)
 
@@ -185,7 +185,7 @@ class TestOpenPyXLCrud(ExcelTest):
     def test_write_sheet_data(self):
         # python35 cannot write to Path, so use os.path
         cols, rows = 1, 1
-        expected_data = [[0 for x in range(cols)] for y in range(rows)]
+        expected_data = [[0 for _ in range(cols)] for _ in range(rows)]
         expected_data[0][0] = 'a'
         workbook = Workbook()
         sheetname = 'a'
@@ -194,7 +194,7 @@ class TestOpenPyXLCrud(ExcelTest):
         )
         saved_sheet = after_written_workbook[sheetname]
         savedcols, savedrows = saved_sheet.max_column, saved_sheet.max_row
-        saved_data = [[0 for x in range(savedcols)] for y in range(savedrows)]
+        saved_data = [[0 for _ in range(savedcols)] for _ in range(savedrows)]
         for row_index, row in enumerate(
             saved_sheet.iter_rows(
                 max_col=saved_sheet.max_column,
