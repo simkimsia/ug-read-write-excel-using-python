@@ -15,4 +15,4 @@ def sanitise_sheet_name(sheet_name):
         sheet_name = sheet_name.replace(ch, "")
     for ch in replaced_with_hyphens:
         sheet_name = sheet_name.replace(ch, "-")
-    return sheet_name[0:33]
+    return sheet_name[:33]

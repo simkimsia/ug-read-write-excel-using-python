@@ -25,7 +25,7 @@ for filename in glob.iglob(test_path_py, recursive=True):
     print(filename)
     basename = os.path.basename(filename)
     if basename.startswith('test_9'):
-        new_name = 'test_09' + basename[6:]
+        new_name = f'test_09{basename[6:]}'
         os.rename(filename,
                   os.path.join(test_path, new_name))
 

@@ -4,9 +4,7 @@ from openpyxl import load_workbook
 def has_freeze_pane(file_path, sheet_name):
     wb = load_workbook(file_path)
     ws = wb[sheet_name]
-    if ws.freeze_panes == 'A1' or ws.freeze_panes is None:
-        return False
-    return True
+    return ws.freeze_panes != 'A1' and ws.freeze_panes is not None
 
 
 def freeze_pane(file_path, sheet_name, cell_or_string):
